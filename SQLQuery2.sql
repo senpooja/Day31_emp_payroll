@@ -35,3 +35,9 @@ update employee_payroll  set gender = 'f' where name = 'Tarisa';
 update employee_payroll  set gender = 'm' where name = 'Bill' or name ='charlie';
 update employee_payroll  set salary = 300000.00 where name ='Tarisa'
 
+# UC7
+select Gender, sum(Salary) as TotalSalary from employee_payroll group by gender;
+select Gender, avg(Salary) as AverageSalary from employee_payroll group by Gender;
+select Gender, min(Salary) as Minimum from employee_payroll group by Gender;
+select Gender, max(Salary) as Maximum from employee_payroll group by Gender;
+select Gender, count(*) as MaleorFemale from employee_payroll group by Gender;
