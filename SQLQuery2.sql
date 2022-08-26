@@ -21,3 +21,10 @@ INSERT into employee_payroll ( name salary, start) VALUES
 ('Tarisa',100000, '2019-11-13')
 ('Charlei',100000, '2020-05-21');
 
+#	UC 5
+
+select * from employee_payroll WHERE name ='Bill';
+select * from employee_payroll where start between CAST('2018-01-03' as date) and date(now());
+
+
+
