@@ -12,3 +12,9 @@ name varchar(30),
 salary double not null,
 primary key (id)
 );
+# UC 3
+
+INSERT into employee_payroll ( name salary, start) VALUES
+('Bill',100000, '2018-01-03')
+('Tarisa',100000, '2019-11-13')
+('Charlei',100000, '2020-05-21');
