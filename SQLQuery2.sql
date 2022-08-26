@@ -47,3 +47,12 @@ Alter table employee_payroll add
 phone int(15),
 address varchar(50) default 'us',
 department varchar(20) default 'cs' not null ;
+
+
+# UC 9
+alter table employee_payroll add 
+basic_pay money,
+deducation money,
+taxable_pay money,
+income_tax money,
+net_pay money;
