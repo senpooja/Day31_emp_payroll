@@ -28,3 +28,10 @@ select * from employee_payroll where start between CAST('2018-01-03' as date) an
 
 
 
+# UC 6
+
+alter table employee_payroll add gender char(1) after name;
+update employee_payroll  set gender = 'f' where name = 'Tarisa';
+update employee_payroll  set gender = 'm' where name = 'Bill' or name ='charlie';
+update employee_payroll  set salary = 300000.00 where name ='Tarisa'
+
