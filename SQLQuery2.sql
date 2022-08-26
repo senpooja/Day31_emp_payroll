@@ -41,3 +41,9 @@ select Gender, avg(Salary) as AverageSalary from employee_payroll group by Gende
 select Gender, min(Salary) as Minimum from employee_payroll group by Gender;
 select Gender, max(Salary) as Maximum from employee_payroll group by Gender;
 select Gender, count(*) as MaleorFemale from employee_payroll group by Gender;
+
+# UC 8
+Alter table employee_payroll add 
+phone int(15),
+address varchar(50) default 'us',
+department varchar(20) default 'cs' not null ;
