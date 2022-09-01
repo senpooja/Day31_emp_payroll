@@ -52,6 +52,8 @@ namespace Employee_PayrollUsingSQL
             }
         }
 
+        //UC-3 Update salary of an Employee
+
         public int UpdateSalary()
         {
             try
@@ -84,6 +86,8 @@ namespace Employee_PayrollUsingSQL
                 this.connection.Close();
             }
         }
+
+        //UC-4 Date Range Search of employees
 
         public bool DateRangeSearch()
         {
@@ -160,7 +164,6 @@ namespace Employee_PayrollUsingSQL
             }
             return false;
         }
+
     }
 }
-
-   
