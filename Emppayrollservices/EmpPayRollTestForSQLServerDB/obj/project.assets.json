@@ -6650,11 +6650,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#program\\EmployeePayRoll\\Emppayrollservices\\EmpPayRollTestForSQLServerDB\\EmpPayRollTestForSQLServerDB.csproj",
+      "projectUniqueName": "D:\\C#program\\Emp_PayRoll\\Emppayrollservices\\EmpPayRollTestForSQLServerDB\\EmpPayRollTestForSQLServerDB.csproj",
       "projectName": "EmpPayRollTestForSQLServerDB",
-      "projectPath": "D:\\C#program\\EmployeePayRoll\\Emppayrollservices\\EmpPayRollTestForSQLServerDB\\EmpPayRollTestForSQLServerDB.csproj",
+      "projectPath": "D:\\C#program\\Emp_PayRoll\\Emppayrollservices\\EmpPayRollTestForSQLServerDB\\EmpPayRollTestForSQLServerDB.csproj",
       "packagesPath": "C:\\Users\\pooja\\.nuget\\packages\\",
-      "outputPath": "D:\\C#program\\EmployeePayRoll\\Emppayrollservices\\EmpPayRollTestForSQLServerDB\\obj\\",
+      "outputPath": "D:\\C#program\\Emp_PayRoll\\Emppayrollservices\\EmpPayRollTestForSQLServerDB\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pooja\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6671,8 +6671,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\C#program\\EmployeePayRoll\\Emppayrollservices\\Emppayrollservices\\Emppayrollservices.csproj": {
-              "projectPath": "D:\\C#program\\EmployeePayRoll\\Emppayrollservices\\Emppayrollservices\\Emppayrollservices.csproj"
+            "D:\\C#program\\Emp_PayRoll\\Emppayrollservices\\Emppayrollservices\\Emppayrollservices.csproj": {
+              "projectPath": "D:\\C#program\\Emp_PayRoll\\Emppayrollservices\\Emppayrollservices\\Emppayrollservices.csproj"
             }
           }
         }

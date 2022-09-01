@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\C#program\\EmployeePayRoll\\Emppayrollservices\\Emppayrollservices\\Emppayrollservices.csproj": {}
+    "D:\\C#program\\Emp_PayRoll\\Emppayrollservices\\Emppayrollservices\\Emppayrollservices.csproj": {}
   },
   "projects": {
-    "D:\\C#program\\EmployeePayRoll\\Emppayrollservices\\Emppayrollservices\\Emppayrollservices.csproj": {
+    "D:\\C#program\\Emp_PayRoll\\Emppayrollservices\\Emppayrollservices\\Emppayrollservices.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C#program\\EmployeePayRoll\\Emppayrollservices\\Emppayrollservices\\Emppayrollservices.csproj",
+        "projectUniqueName": "D:\\C#program\\Emp_PayRoll\\Emppayrollservices\\Emppayrollservices\\Emppayrollservices.csproj",
         "projectName": "Emppayrollservices",
-        "projectPath": "D:\\C#program\\EmployeePayRoll\\Emppayrollservices\\Emppayrollservices\\Emppayrollservices.csproj",
+        "projectPath": "D:\\C#program\\Emp_PayRoll\\Emppayrollservices\\Emppayrollservices\\Emppayrollservices.csproj",
         "packagesPath": "C:\\Users\\pooja\\.nuget\\packages\\",
-        "outputPath": "D:\\C#program\\EmployeePayRoll\\Emppayrollservices\\Emppayrollservices\\obj\\",
+        "outputPath": "D:\\C#program\\Emp_PayRoll\\Emppayrollservices\\Emppayrollservices\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pooja\\AppData\\Roaming\\NuGet\\NuGet.Config",
