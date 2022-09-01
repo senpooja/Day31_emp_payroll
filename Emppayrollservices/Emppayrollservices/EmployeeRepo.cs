@@ -1,15 +1,16 @@
-﻿using System;
+﻿using Emppayrollservices;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Emppayrollservices
+namespace Employee_PayrollUsingSQL
 {
     public class EmployeeRepo
     {
-        public static string connectionString = @"(localdb)\MSSQLLocalDB\ProjectsV13;Initial Catalog=payroll_service;Integrated Security=True;Connect Timeout=40;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"; //"Data Source=(localdb)\ProjectsV13;Initial Catalog=payroll_service;Integrated Security=True";
+        public static string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=PayrollService;Integrated Security=True;Connect Timeout=40;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"; //"Data Source=(localdb)\ProjectsV13;Initial Catalog=payroll_service;Integrated Security=True";
         SqlConnection connection = new SqlConnection(connectionString);
         public bool GetAllEmployee()
         {
@@ -18,7 +19,7 @@ namespace Emppayrollservices
                 EmployeeModel employeeModel = new EmployeeModel();
                 using (this.connection)
                 {
-                    string query = @"Select * from employee_payroll1;";
+                    string query = @"Select * from Employee_Payroll;";
                     SqlCommand cmd = new SqlCommand(query, this.connection);
                     this.connection.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
@@ -26,23 +27,9 @@ namespace Emppayrollservices
                     {
                         while (dr.Read())
                         {
-                            //employeeModel.EmployeeID = dr.GetInt32(0);
-                            employeeModel.EmployeeID = Convert.ToInt32(dr["id"]);//dr.GetInt32(0);
-                            employeeModel.EmployeeName = Convert.ToString(dr["name"]); //dr.GetString(9);
-                            employeeModel.PhoneNumber = Convert.ToString(dr["phone"]);                                                        //employeeModel.PhoneNumber = dr.GetString(2);
-                                                                                                                                              //employeeModel.Address = dr.GetString(7);
-                                                                                                                                              //employeeModel.BasicPay = dr.GetDecimal(9);
-                                                                                                                                              //employeeModel.StartDate = dr.GetDateTime(11);
-                                                                                                                                              //employeeModel.Gender = Convert.ToChar(dr.GetString(5));
-                                                                                                                                              //employeeModel.PhoneNumber = dr.GetString(4);
-
-                            //employeeModel.Department = dr.GetString(4);
-                            //employeeModel.Deductions = dr.GetDouble(7);
-                            //employeeModel.TaxablePay = dr.GetDouble(8);
-                            //employeeModel.Tax = dr.GetDouble(9);
-                            //employeeModel.NetPay = dr.GetDouble(10);
-                            Console.WriteLine(employeeModel.EmployeeID + " " + employeeModel.EmployeeName + " " + employeeModel.PhoneNumber);
-                            //System.Console.WriteLine(employeeModel.EmployeeName+" "+employeeModel.BasicPay+ " "+employeeModel.StartDate +" "+ employeeModel.Gender+" "+ employeeModel.PhoneNumber+" "+employeeModel.Address+" "+ employeeModel.Department+" "+ employeeModel.Deductions+" "+ employeeModel.TaxablePay+" "+ employeeModel.Tax+" "+ employeeModel.NetPay);
+                            employeeModel.EmployeeID = Convert.ToInt32(dr["id"]);
+                            employeeModel.EmployeeName = Convert.ToString(dr["name"]);
+                            Console.WriteLine(employeeModel.EmployeeID + " " + employeeModel.EmployeeName);
                             System.Console.WriteLine("\n");
                         }
                     }
@@ -59,31 +46,99 @@ namespace Emppayrollservices
                 System.Console.WriteLine(e.Message);
                 return false;
             }
+            finally
+            {
+                this.connection.Close();
+            }
         }
 
+        public int UpdateSalary()
+        {
+            try
+            {
+                EmployeeModel employeeModel = new EmployeeModel();
+                using (this.connection)
+                {
+                    string query = @"update employee_payroll set salary=30000000 where name='terisa';";
+                    SqlCommand cmd = new SqlCommand(query, this.connection);
+                    this.connection.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.RecordsAffected != 0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("No data found");
+                        return -1;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine(e.Message);
+                return -1;
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
+
+        public bool DateRangeSearch()
+        {
+            try
+            {
+                EmployeeModel employeeModel = new EmployeeModel();
+                using (this.connection)
+                {
+                    string query = @"select name from Employee_Payroll where start_date between '2019-01-01' and GETDATE();";
+                    SqlCommand cmd = new SqlCommand(query, this.connection);
+                    this.connection.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            // employeeModel.EmployeeID = (int)dr["id"];
+                            employeeModel.EmployeeName = Convert.ToString(dr["name"]);
+                            Console.WriteLine(employeeModel.EmployeeName);
+                            Console.WriteLine("\n");
+                        }
+                    }
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
         public bool AddEmployee(EmployeeModel model)
         {
             try
             {
                 using (this.connection)
                 {
-                    //var qury=values()
-                    SqlCommand command = new SqlCommand("SpAddEmployeeDetails", this.connection);
+                    SqlCommand command = new SqlCommand("SpAddEmployee_Details", this.connection);
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@EmployeeName", model.EmployeeName);
+                    command.Parameters.AddWithValue("@Salary", model.Salary);
                     command.Parameters.AddWithValue("@PhoneNumber", model.PhoneNumber);
                     command.Parameters.AddWithValue("@Address", model.Address);
                     command.Parameters.AddWithValue("@Department", model.Department);
                     command.Parameters.AddWithValue("@Gender", model.Gender);
-                    command.Parameters.AddWithValue("@Gender", model.Salary);
                     command.Parameters.AddWithValue("@BasicPay", model.BasicPay);
                     command.Parameters.AddWithValue("@Deductions", model.Deductions);
                     command.Parameters.AddWithValue("@TaxablePay", model.TaxablePay);
                     command.Parameters.AddWithValue("@Tax", model.Tax);
                     command.Parameters.AddWithValue("@NetPay", model.NetPay);
                     command.Parameters.AddWithValue("@StartDate", DateTime.Now);
-                    //command.Parameters.AddWithValue("@City", model.City);
-                    //command.Parameters.AddWithValue("@Country", model.Country);
                     this.connection.Open();
                     var result = command.ExecuteNonQuery();
                     this.connection.Close();
@@ -105,19 +160,7 @@ namespace Emppayrollservices
             }
             return false;
         }
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+   
